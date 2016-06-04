@@ -46,6 +46,7 @@ class samba::server (
   package { $::samba::params::package: ensure => 'installed' }
   service { $::samba::params::service:
     ensure    => 'running',
+    provider  => 'systemd',
     enable    => true,
     hasstatus => true,
     subscribe => File[$::samba::params::config_file],
